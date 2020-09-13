@@ -43,8 +43,29 @@ const setPlayerMoves = (player, moveOneType, moveOneValue, moveTwoType, moveTwoV
     };
 };
 
-setPlayerMoves('Player Two', 'rock', 10, 'paper', 2, 'scissors', 30);
-console.log(playerTwoMoveTwoType)
+const getRoundWinner = () => {
+
+    // playerOneMoveOneType = 'rock';
+    // playerTwoMoveOneType = 'rock';
+    // playerOneMoveOneValue = 20;
+    // playerTwoMoveOneValue = 10;
+    if (playerOneMoveOneType === 'rock' && playerTwoMoveOneType === 'paper'){
+            return 'Player Two';
+    } else if (playerOneMoveOneType === 'rock' && playerTwoMoveOneType === 'scissors'){
+        return 'Player One';
+    } else if (playerOneMoveOneType === 'rock' && playerTwoMoveOneType === 'rock'){
+        if (playerOneMoveOneValue > playerTwoMoveOneValue){
+                return 'Player One';          
+        } else if (playerOneMoveOneValue < playerTwoMoveOneValue){
+            return  'Player Two';
+        };
+    }
+};
+
+console.log(getRoundWinner())
+
+// setPlayerMoves('Player Two', 'rock', 10, 'paper', 2, 'scissors', 30);
+// console.log(playerTwoMoveTwoType)
 
 
 
