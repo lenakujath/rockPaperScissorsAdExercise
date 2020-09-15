@@ -119,8 +119,6 @@ const getRoundWinner = (round) => {
     };
 };
 
-
-
 const getGameWinner = () => {
     if (!playerOneMoveOneType || !playerOneMoveTwoType || !playerOneMoveThreeType 
         || !playerTwoMoveOneType || !playerTwoMoveTwoType || !playerTwoMoveThreeType || !playerOneMoveOneValue || 
@@ -144,13 +142,34 @@ const getGameWinner = () => {
     };
     if (getRoundWinner(3) === 'Player One'){
         counterOne ++;
-    }  if (getRoundWinner(3) === 'Player Two'){
+    } if (getRoundWinner(3) === 'Player Two'){
         counterTwo ++;
     };
     if (counterOne === counterTwo) return 'Tie';
     if (counterOne > counterTwo) return 'Player One';
     if (counterOne < counterTwo) return 'Player Two';
 };
+
+const setComputerMoves = () => {
+    //determing the types for player two
+    let moves = ['rock', 'paper', 'scissors'];
+    let positionOne = Math.floor(Math.random() * moves.length);
+    let positionTwo = Math.floor(Math.random() * moves.length);
+    let positionThree = Math.floor(Math.random() * moves.length);
+    //chosen types:
+    let typeOne = moves[positionOne];
+    let typeTwo = moves[positionTwo];
+    let typeThree = moves[positionThree];
+    //determing the values for player two
+    let valueOne = Math.floor((Math.random() * 97) + 1);
+    let valueTwo =  (Math.floor((Math.random() * (99- valueOne)) +2) -1);
+    let valueThree =  99 - valueOne - valueTwo;
+     if (valueThree === 0){
+        valueTwo -= 1;
+        valueThree += 1;
+     };
+    setPlayerMoves('Player Two', typeOne, valueOne, typeTwo, valueTwo, typeThree, valueThree);
+}
 
 
 
